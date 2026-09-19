@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="妻子的新世界更新时间查询网，提供最新章节列表、连载状态及官方播出时间表，帮助读者快速追踪剧情进度。">
+    <meta name="keywords" content="妻子的新世界更新时间,妻子的新世界章节,妻子的新世界连载状态,妻子的新世界最新">
+    <title>妻子的新世界更新时间-最新章节与连载状态追踪</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #d32f2f;
+            --primary-hover: #b71c1c;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --text-light: #999999;
+            --bg-body: #f5f7fa;
+            --bg-card: #ffffff;
+            --border-color: #e0e0e0;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f0f0f0;
+            border-radius: 20px;
+            padding: 5px 15px;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 14px;
+            width: 150px;
+        }
+
+        .search-box button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            padding: 60px 0;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Grid Layout */
+        .main-content {
+            display: grid;
+            grid-template-columns: 240px 1fr 280px;
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        /* Sidebar Left */
+        .sidebar-left {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .category-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .category-card h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .cat-list li {
+            margin-bottom: 10px;
+        }
+
+        .cat-list a {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .cat-list a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Content Area */
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 24px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        .update-status-badge {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Chapter List */
+        .chapter-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chapter-item {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .chapter-item:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .chapter-info {
+            flex: 1;
+        }
+
+        .chapter-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-main);
+        }
+
+        .chapter-meta {
+            font-size: 13px;
+            color: var(--text-light);
+            display: flex;
+            gap: 15px;
+        }
+
+        .chapter-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .chapter-action {
+            margin-left: 20px;
+        }
+
+        .btn-read {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .btn-read:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-read.disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .page-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .page-item.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .page-item:hover:not(.active) {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Sidebar Right */
+        .sidebar-right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .info-card h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .info-label {
+            color: var(--text-secondary);
+        }
+
+        .info-value {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .tag:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            padding: 40px 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 200px 1fr;
+            }
+            .sidebar-right {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                font-size: 14px;
+            }
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .sidebar-left {
+                display: none; /* Simplify for mobile */
+            }
+            .hero h1 {
+                font-size: 28px;
+            }
+            .chapter-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .chapter-action {
+                margin-left: 0;
+                width: 100%;
+            }
+            .btn-read {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#d32f2f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="#d32f2f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="#d32f2f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>妻子的新世界</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">章节目录</a></li>
+                    <li><a href="#">人物图鉴</a></li>
+                    <li><a href="#">评论讨论</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索章节或角色...">
+                <button>🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>妻子的新世界</h1>
+            <p>追踪最新连载进度，第一时间获取更新时间表与章节详情</p>
+        </section>
+
+        <div class="main-content">
+            <!-- Left Sidebar -->
+            <aside class="sidebar-left">
+                <div class="category-card">
+                    <h3>更新时间</h3>
+                    <ul class="cat-list">
+                        <li><a href="#">每周一更新</a></li>
+                        <li><a href="#">周末加更</a></li>
+                        <li><a href="#">节假日通知</a></li>
+                    </ul>
+                </div>
+                <div class="category-card">
+                    <h3>最新章节</h3>
+                    <ul class="cat-list">
+                        <li><a href="#">第 142 章：意外的重逢</a></li>
+                        <li><a href="#">第 141 章：谎言的代价</a></li>
+                        <li><a href="#">第 140 章：深夜的谈话</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <section class="content-area">
+                <div class="section-header">
+                    <h2>最新连载章节</h2>
+                    <span class="update-status-badge">连载中</span>
+                </div>
+
+                <div class="chapter-list">
+                    <!-- Chapter Item 1 -->
+                    <article class="chapter-item">
+                        <div class="chapter-info">
+                            <h3 class="chapter-title">第 145 章：迷雾散去</h3>
+                            <div class="chapter-meta">
+                                <span>📅 2023年10月25日</span>
+                                <span>👁 12,304 阅读</span>
+                            </div>
+                        </div>
+                        <div class="chapter-action">
+                            <a href="#" class="btn-read">立即阅读</a>
+                        </div>
+                    </article>
+
+                    <!-- Chapter Item 2 -->
+                    <article class="chapter-item">
+                        <div class="chapter-info">
+                            <h3 class="chapter-title">第 144 章：最后的防线</h3>
+                            <div class="chapter-meta">
+                                <span>📅 2023年10月18日</span>
+                                <span>👁 10,892 阅读</span>
+                            </div>
+                        </div>
+                        <div class="chapter-action">
+                            <a href="#" class="btn-read">立即阅读</a>
+                        </div>
+                    </article>
+
+                    <!-- Chapter Item 3 -->
+                    <article class="chapter-item">
+                        <div class="chapter-info">
+                            <h3 class="chapter-title">第 143 章：无声的告别</h3>
+                            <div class="chapter-meta">
+                                <span>📅 2023年10月11日</span>
+                                <span>👁 9,450 阅读</span>
+                            </div>
+                        </div>
+                        <div class="chapter-action">
+                            <a href="#" class="btn-read">立即阅读</a>
+                        </div>
+                    </article>
+
+                    <!-- Chapter Item 4 -->
+                    <article class="chapter-item">
+                        <div class="chapter-info">
+                            <h3 class="chapter-title">第 142 章：意外的重逢</h3>
+                            <div class="chapter-meta">
+                                <span>📅 2023年10月04日</span>
+                                <span>👁 11,200 阅读</span>
+                            </div>
+                        </div>
+                        <div class="chapter-action">
+                            <a href="#" class="btn-read">立即阅读</a>
+                        </div>
+                    </article>
+
+                    <!-- Chapter Item 5 -->
+                    <article class="chapter-item">
+                        <div class="chapter-info">
+                            <h3 class="chapter-title">第 141 章：谎言的代价</h3>
+                            <div class="chapter-meta">
+                                <span>📅 2023年09月27日</span>
+                                <span>👁 8,760 阅读</span>
+                            </div>
+                        </div>
+                        <div class="chapter-action">
+                            <a href="#" class="btn-read">立即阅读</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Pagination -->
+                <nav class="pagination">
+                    <a href="#" class="page-item">上一页</a>
+                    <a href="#" class="page-item active">1</a>
+                    <a href="#" class="page-item">2</a>
+                    <a href="#" class="page-item">3</a>
+                    <a href="#" class="page-item">4</a>
+                    <a href="#" class="page-item">5</a>
+                    <a href="#" class="page-item">下一页</a>
+                </nav>
+            </section>
+
+            <!-- Right Sidebar -->
+            <aside class="sidebar-right">
+                <div class="info-card">
+                    <h3>作品简介</h3>
+                    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 15px;">
+                        当婚姻的激情褪去，生活只剩下柴米油盐，曾经的爱人是否还能找回当初的默契？在这个看似平静的世界里，一场关于信任与背叛的较量正在悄然展开。
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>更新时间表</h3>
+                    <div class="info-row">
+                        <span class="info-label">常规更新：</span>
+                        <span class="info-value">每周一 20:00</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">特别加更：</span>
+                        <span class="info-value">节假日视情况</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">预计完结：</span>
+                        <span class="info-value">2024年第一季度</span>
+                    </div>
+                    <div style="margin-top: 15px; padding: 10px; background: #fff3e0; border-radius: 4px; font-size: 12px; color: #e65100;">
+                        ⚠️ 请关注本站公告，如有时间调整将第一时间通知。
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>热门标签</h3>
+                    <div class="tags-cloud">
+                        <a href="#" class="tag">现实情感</a>
+                        <a href="#" class="tag">婚姻危机</a>
+                        <a href="#" class="tag">职场</a>
+                        <a href="#" class="tag">悬疑</a>
+                        <a href="#" class="tag">家庭伦理</a>
+                        <a href="#" class="tag">连载中</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于本站</h4>
+                    <ul>
+                        <li><a href="#">网站简介</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">联系合作</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">阅读指南</a></li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>友情链接</h4>
+                    <ul>
+                        <li><a href="#">漫画之家</a></li>
+                        <li><a href="#">二次元动漫网</a></li>
+                        <li><a href="#">小说阅读网</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 妻子的新世界更新时间追踪网. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
