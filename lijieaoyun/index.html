@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="历届奥运会回顾 - 汇集自1896年雅典奥运会至2020东京奥运会的历史数据、精彩瞬间、奖牌榜及经典赛事盘点。">
+    <meta name="keywords" content="历届奥运会回顾,奥运会历史,奥运奖牌榜,奥运举办城市,经典奥运时刻">
+    <title>历届奥运会回顾 - 历史数据与经典时刻全纪录</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #c1272d;
+            --secondary-color: #006da6;
+            --dark-bg: #1a1a1a;
+            --light-bg: #f4f6f8;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--light-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #ddd;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #004e80 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-bar {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        .search-bar input {
+            border: none;
+            background: transparent;
+            padding: 10px 20px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            width: 300px;
+        }
+
+        .search-bar button {
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .search-bar button:hover {
+            background: #a41015;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            color: var(--dark-bg);
+        }
+
+        .view-all {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Timeline Grid */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .olympic-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .olympic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image {
+            height: 180px;
+            background-color: #ddd;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .olympic-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .edition-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-year {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .card-tags span {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 5px;
+            color: #555;
+        }
+
+        /* Featured Highlights */
+        .highlights-section {
+            background-color: white;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .main-highlight {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 400px;
+        }
+
+        .main-highlight img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .highlight-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 30px;
+            color: white;
+        }
+
+        .highlight-overlay h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .sub-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sub-highlight-item {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background: white;
+            padding: 10px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid #eee;
+        }
+
+        .sub-highlight-item img {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .sub-highlight-text h4 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .sub-highlight-text p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background-color: var(--dark-bg);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-main);
+        }
+
+        .faq-question:hover {
+            color: var(--secondary-color);
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #888;
+            padding: 50px 0 20px;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .highlight-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <span>★</span> 奥运回响
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#timeline">历史时间线</a></li>
+                    <li><a href="#highlights">经典瞬间</a></li>
+                    <li><a href="#stats">数据统计</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>历届奥运会回顾</h1>
+                <p>从1896年雅典第一届现代奥运会到2020东京奥运会，重温人类体育史上的荣耀与梦想。</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="输入年份或城市搜索...">
+                    <button>搜索</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="container">
+            <div class="section-header">
+                <h2>历史时间线</h2>
+                <a href="#" class="view-all">查看全部 32 届 &rarr;</a>
+            </div>
+            <div class="timeline-grid">
+                <!-- Card 1 -->
+                <article class="olympic-card">
+                    <div class="card-image">
+                        <span class="edition-badge">第32届</span>
+                        <img src="https://picsum.photos/seed/tokyo2020/400/300" alt="2020东京奥运会">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-year">2020年</span>
+                        <h3 class="card-title">东京奥运会</h3>
+                        <div class="card-info">
+                            <span>日本·东京</span>
+                            <span>33个大项</span>
+                        </div>
+                        <div class="card-tags">
+                            <span>推迟一年</span>
+                            <span>无观众</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="olympic-card">
+                    <div class="card-image">
+                        <span class="edition-badge">第31届</span>
+                        <img src="https://picsum.photos/seed/rio2016/400/300" alt="2016里约奥运会">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-year">2016年</span>
+                        <h3 class="card-title">里约热内卢奥运会</h3>
+                        <div class="card-info">
+                            <span>巴西·里约</span>
+                            <span>28个大项</span>
+                        </div>
+                        <div class="card-tags">
+                            <span>首次南美</span>
+                            <span>泳池风波</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="olympic-card">
+                    <div class="card-image">
+                        <span class="edition-badge">第30届</span>
+                        <img src="https://picsum.photos/seed/london2012/400/300" alt="2012伦敦奥运会">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-year">2012年</span>
+                        <h3 class="card-title">伦敦奥运会</h3>
+                        <div class="card-info">
+                            <span>英国·伦敦</span>
+                            <span>26个大项</span>
+                        </div>
+                        <div class="card-tags">
+                            <span>第三次举办</span>
+                            <span>七金菲尔普斯</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="olympic-card">
+                    <div class="card-image">
+                        <span class="edition-badge">第29届</span>
+                        <img src="https://picsum.photos/seed/beijing2008/400/300" alt="2008北京奥运会">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-year">2008年</span>
+                        <h3 class="card-title">北京奥运会</h3>
+                        <div class="card-info">
+                            <span>中国·北京</span>
+                            <span>28个大项</span>
+                        </div>
+                        <div class="card-tags">
+                            <span>无与伦比</span>
+                            <span>鸟巢开幕式</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="olympic-card">
+                    <div class="card-image">
+                        <span class="edition-badge">第28届</span>
+                        <img src="https://picsum.photos/seed/athens2004/400/300" alt="2004雅典奥运会">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-year">2004年</span>
+                        <h3 class="card-title">雅典奥运会</h3>
+                        <div class="card-info">
+                            <span>希腊·雅典</span>
+                            <span>28个大项</span>
+                        </div>
+                        <div class="card-tags">
+                            <span>回归故里</span>
+                            <span>刘翔退赛</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="olympic-card">
+                    <div class="card-image">
+                        <span class="edition-badge">第27届</span>
+                        <img src="https://picsum.photos/seed/sydney2000/400/300" alt="2000悉尼奥运会">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-year">2000年</span>
+                        <h3 class="card-title">悉尼奥运会</h3>
+                        <div class="card-info">
+                            <span>澳大利亚·悉尼</span>
+                            <span>28个大项</span>
+                        </div>
+                        <div class="card-tags">
+                            <span>千禧之年</span>
+                            <span>五星级开幕式</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="highlights" class="highlights-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>经典瞬间</h2>
+                </div>
+                <div class="highlight-grid">
+                    <div class="main-highlight">
+                        <img src="https://picsum.photos/seed/olympic/800/600" alt="北京奥运会开幕式">
+                        <div class="highlight-overlay">
+                            <h3>北京2008：人类的巅峰盛宴</h3>
+                            <p>第29届夏季奥林匹克运动会于2008年8月8日在北京举行。这是中国首次举办奥运会，也是中国首次举办亚运会、世界杯足球赛、世博会、奥运会和残奥会。</p>
+                        </div>
+                    </div>
+                    <div class="sub-highlights">
+                        <div class="sub-highlight-item">
+                            <img src="https://picsum.photos/seed/legend/100/100" alt="传奇人物">
+                            <div class="sub-highlight-text">
+                                <h4>传奇诞生</h4>
+                                <p>迈克尔·菲尔普斯在北京独揽8金，创造历史。</p>
+                            </div>
+                        </div>
+                        <div class="sub-highlight-item">
+                            <img src="https://picsum.photos/seed/record/100/100" alt="世界纪录">
+                            <div class="sub-highlight-text">
+                                <h4>打破极限</h4>
+                                <p>博尔特在田径赛场展现惊人速度，震惊世界。</p>
+                            </div>
+                        </div>
+                        <div class="sub-highlight-item">
+                            <img src="https://picsum.photos/seed/olympic/100/100" alt="奖牌榜">
+                            <div class="sub-highlight-text">
+                                <h4>中国荣耀</h4>
+                                <p>中国代表团在金牌榜上位居首位，彰显国力。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="stats" class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>32</h3>
+                        <p>现代夏季奥运会届数</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>1896</h3>
+                        <p>首届举办年份</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>206</h3>
+                        <p>参与国家和地区</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>50+</h3>
+                        <p>设立大项数量</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>常见问题</h2>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">第一届现代奥运会是在哪一年举办的？</div>
+                        <div class="faq-answer">第一届现代奥林匹克运动会于1896年4月6日在希腊雅典举行。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">奥运会每几年举办一次？</div>
+                        <div class="faq-answer">现代奥林匹克运动会每四年举办一次。如果因为特殊原因无法举办，将顺延至下一个年份。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">夏季奥运会和冬季奥运会是同一年吗？</div>
+                        <div class="faq-answer">不是。夏季奥运会和冬季奥运会分别举办，且通常相隔两年。例如2020东京奥运会是夏季，2022北京冬奥会是冬季。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">如何查找某一届奥运会的奖牌榜？</div>
+                        <div class="faq-answer">您可以在本站的时间线栏目中点击对应的年份卡片，查看详细的奖牌统计和赛事结果。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <p>致力于为体育爱好者提供最全面、最准确的奥运会历史资料回顾服务。我们记录历史，致敬拼搏。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#timeline">历届回顾</a></li>
+                        <li><a href="#highlights">精彩图集</a></li>
+                        <li><a href="#stats">数据统计</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>相关链接</h4>
+                    <ul>
+                        <li><a href="#">国际奥委会 (IOC)</a></li>
+                        <li><a href="#">奥林匹克博物馆</a></li>
+                        <li><a href="#">残奥会官网</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 历届奥运会回顾网. All Rights Reserved. 本站内容仅供学习与参考，非官方站点。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+          </html>
